@@ -1,7 +1,7 @@
 #Add time cut only
-import pytube
-import os
-from moviepy.editor import *
+import pytube #for pytube. 
+import os #for renaming file stored in the file explorer
+from moviepy.editor import * #for VideoFileClip etc.
 
 #dwnPath = "C:/Users/deexi/OneDrive/Desktop/WebDev/Pytube/Mp4Garage","wb"
 
@@ -9,6 +9,7 @@ urlLink = "https://www.youtube.com/watch?v=Un0VUHq2MZ0"
 
 youtubeObj = pytube.YouTube(urlLink)
 
+#title given in youtube
 fileNameMp4 = youtubeObj.title 
 
 fileMp4 = youtubeObj.streams.filter(progressive=True, file_extension='mp4').get_highest_resolution()
@@ -19,9 +20,9 @@ fileMp4.download()
 
 print("Download Done ♥♥♥\n")
 
-firstWordTitle = fileNameMp4.split(" ",1)
+firstWordTitle = fileNameMp4.split(" ")
 
-renameName = firstWordTitle[0]+".mp4"
+renameName = firstWordTitle[0]+" "+firstWordTitle[1]+".mp4"
 
 os.rename(fileMp4.default_filename,renameName)
 
@@ -33,7 +34,7 @@ mp3FileName = mp4FileName[:-4] + ".mp3"
 
 # EDITING MP3 ------------
 
-#videoClip = VideoFileClip(mp4FileName).path("C:/Users/deexi/OneDrive/Desktop/WebDev/Pytube/Mp3Garage")
+# videoClip = VideoFileClip(mp4FileName).path("C:/Users/deexi/OneDrive/Desktop")
 
 videoClip = VideoFileClip(mp4FileName)
 
